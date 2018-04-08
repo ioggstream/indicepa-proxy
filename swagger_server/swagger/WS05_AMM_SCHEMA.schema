@@ -1,0 +1,123 @@
+WS05Response:
+  properties:
+    data:
+      properties:
+        Referenti:
+          items:
+            properties:
+              cogn_ref:
+                description: Cognome del referente dell'Ente
+                required: false
+                type: string
+              nome_ref:
+                description: Nome del referente dell'Ente
+                required: false
+                type: string
+            type: object
+          minItems: 1
+          type: array
+        acronimo:
+          description: Acronimo dell'Ente
+          required: false
+          type: string
+        cap:
+          description: Cap registrato in IPA per la sede legale dell'Ente
+          required: false
+          type: string
+        categoria:
+          description: Categoria dell'Ente in IPA
+          required: false
+          type: string
+        cf:
+          description: Codice fiscale dell'Ente
+          required: false
+          type: string
+        cod_amm:
+          description: Codice Ente accreditato in IPA
+          required: true
+          type: string
+        cogn_resp:
+          description: Cognome del responsabile dell'Ente
+          required: false
+          type: string
+        comune:
+          description: Comune registrato in IPA per la sede legale dell'Ente
+          required: false
+          type: string
+        data_accreditamento:
+          description: Data di accreditamento dell'Ente
+          required: false
+          type: string
+        des_amm:
+          description: Denominazione Ente accreditato in IPA
+          required: false
+          type: string
+        indirizzo:
+          description: Indirizzo postale registrato in IPA per la sede legale dell'Ente
+          required: false
+          type: string
+        liv_accessibili:
+          description: "livello di accessibilit\xE0 del sito dell'Ente"
+          required: false
+          type: number
+        mail1:
+          description: "Indirizzo email primario associato all\u2019Ente di tipo PEC|CECPAC"
+          required: false
+          type: string
+        mail2:
+          description: "Indirizzo email associato all\u2019Ente"
+          required: false
+          type: string
+        mail3:
+          description: "Indirizzo email associato all\u2019Ente"
+          required: false
+          type: string
+        mail4:
+          description: "Indirizzo email primario associato all\u2019Ente"
+          required: false
+          type: string
+        mail5:
+          description: "Indirizzo email associato all\u2019Ente"
+          required: false
+          type: string
+        nome_resp:
+          description: Nome del responsabile dell'Ente
+          required: false
+          type: string
+        provincia:
+          description: Provincia registrata in IPA per la sede legale dell'Ente
+          required: false
+          type: string
+        regione:
+          description: Regione registrata in IPA per la sede legale dell'Ente
+          required: false
+          type: string
+        sito_istituzionale:
+          description: Sito istituzionale dell'Ente
+          required: false
+          type: string
+        tipologia:
+          description: "Tipologia dell\u2019Ente in IPA"
+          required: false
+          type: string
+        titolo_resp:
+          description: Titolo del responsabile dell'Ente
+          required: false
+          type: string
+      type: object
+    result:
+      properties:
+        cod_err:
+          description: Codice di ritorno
+          required: true
+          type: number
+        desc_err:
+          description: Descrizione errore
+          required: false
+          type: string
+        num_items:
+          description: Numero di occorrenze trovate
+          minimum: 0
+          required: true
+          type: number
+      type: object

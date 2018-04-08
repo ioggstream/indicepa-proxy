@@ -1,0 +1,51 @@
+WS01Response:
+  properties:
+    data:
+      items:
+        properties:
+          OU:
+            items:
+              properties:
+                cod_uni_ou:
+                  description: Codice Univoco Ufficio destinatario di Fatturazione
+                    Elettroniche
+                  required: false
+                  type: string
+                des_ou:
+                  description: Denominazione Unita Organizzativa
+                  required: true
+                  type: string
+                stato_canale:
+                  description: 'A: Canale Attivo, V: In Fase di validazione'
+                  required: true
+                  type: string
+              type: object
+            minItems: 1
+            type: array
+          cod_amm:
+            description: Codice Ente accreditato in IPA
+            required: true
+            type: string
+          des_amm:
+            description: Denominazione Ente accreditato in IPA
+            required: true
+            type: string
+        type: object
+      required: false
+      type: array
+    result:
+      properties:
+        cod_err:
+          description: Codice di ritorno
+          required: true
+          type: number
+        desc_err:
+          description: Descrizione errore
+          required: false
+          type: string
+        num_items:
+          description: Numero di occorrenze trovate
+          minimum: 0
+          required: true
+          type: number
+      type: object

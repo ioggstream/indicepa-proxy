@@ -1,0 +1,96 @@
+WS03Response:
+  properties:
+    data:
+      items:
+        properties:
+          cap:
+            description: CapregistratoinIPAperlasededell'UO
+            required: 'false'
+            type: string
+          cod_amm:
+            description: Codice Ente accreditato in IPA
+            required: 'true'
+            type: string
+          cod_aoo:
+            description: Codice AOO
+            required: 'false'
+            type: string
+          cod_uni_ou:
+            description: Codice Univoco dell'UO
+            required: 'true'
+            type: string
+          cogn_resp:
+            description: Cognomedelresponsabiledell'UO
+            required: 'false'
+            type: string
+          comune:
+            description: ComuneregistratoinIPAperlasededell'UO
+            required: 'false'
+            type: string
+          des_ou:
+            description: Nome dell'UO
+            required: 'false'
+            type: string
+          fax:
+            description: "NumerodifaxregistratoinIPAperdell\u2019UO"
+            required: 'false'
+            type: string
+          indirizzo:
+            description: IndirizzopostaleregistratoinIPAperlasededell'UO
+            required: 'false'
+            type: string
+          mail1:
+            description: "Indirizzoemailprimarioassociatoall\u2019UO"
+            required: 'false'
+            type: string
+          mail2:
+            description: "Indirizzoemailassociatoall\u2019UO"
+            required: 'false'
+            type: string
+          mail3:
+            description: "Indirizzoemailassociatoall\u2019UO"
+            required: 'false'
+            type: string
+          mail_resp:
+            description: Indirizzoemaildelresponsabiledell'UO
+            required: 'false'
+            type: string
+          nome_resp:
+            description: Nomedelresponsabiledell'UO
+            required: 'false'
+            type: string
+          provincia:
+            description: Provincia registrata in IPA per la sede dell'UO
+            required: 'false'
+            type: string
+          regione:
+            description: Regione registrata in IPA per la sede dell'UO
+            required: 'false'
+            type: string
+          tel:
+            description: "NumeroditelefonoregistratoinIPAperdell\u2019UO"
+            required: 'false'
+            type: string
+          tel_resp:
+            description: Numeroditelefonodelresponsabiledell'UO
+            required: 'false'
+            type: string
+        type: object
+      required: 'false'
+      type: array
+    result:
+      properties:
+        cod_err:
+          description: Codice di ritorno
+          required: true
+          type: number
+        desc_err:
+          description: Descrizione errore
+          required: false
+          type: string
+        num_items:
+          description: Numero di occorrenze trovate
+          minimum: 0
+          required: 'true'
+          type: number
+      type: object

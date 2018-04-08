@@ -1,0 +1,44 @@
+WS07Response:
+  properties:
+    data:
+      items:
+        properties:
+          cod_amm:
+            description: Codice Ente accreditato in IPA
+            required: true
+            type: string
+          cod_entita:
+            description: "Codice dell'entit\xE0"
+            required: true
+            type: string
+          des_amm:
+            description: Denominazione Ente accreditato in IPA
+            required: false
+            type: string
+          tipo_email:
+            description: Tipo email:PEC|CECPAC|ALTRO
+            required: false
+            type: string
+          tipo_entita:
+            description: "Tipo entit\xE0: AMM|AOO|UO|SERVAMM|SERVAOO|SERVOU|RESPAOO|RESPUO"
+            required: true
+            type: string
+        required: false
+        type: object
+      type: array
+    result:
+      properties:
+        cod_err:
+          description: Codice di ritorno
+          required: true
+          type: number
+        desc_err:
+          description: Descrizione errore
+          required: false
+          type: string
+        num_items:
+          description: Numero di occorrenze trovate
+          minimum: 0
+          required: true
+          type: number
+      type: object

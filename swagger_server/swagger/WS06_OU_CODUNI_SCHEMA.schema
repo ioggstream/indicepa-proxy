@@ -1,0 +1,109 @@
+WS06Response:
+  properties:
+    data:
+      properties:
+        cap:
+          description: Cap registrato in IPA per la sede dell'UO
+          required: false
+          type: string
+        cf:
+          description: Codice fiscale del servizio di faturazione
+          required: true
+          type: string
+        cod_amm:
+          description: Codice Ente accreditato in IPA
+          required: true
+          type: string
+        cod_aoo:
+          description: Codice AOO
+          required: false
+          type: string
+        cod_uni_ou:
+          description: Codice Univoco dell'UO
+          required: true
+          type: string
+        cogn_resp:
+          description: Cognome del responsabile dell'UO
+          required: false
+          type: string
+        comune:
+          description: Comune registrato in IPA per la sede dell'UO
+          required: false
+          type: string
+        dat_val_canale_trasm_sfe:
+          description: "Data di inizio validit\xE0 del servizio di fatturazione"
+          required: false
+          type: string
+        des_ou:
+          description: Nome dell'UO
+          required: false
+          type: string
+        dt_verifica_cf:
+          description: Data di validazione del cf del servizio di fatturazione
+          required: false
+          type: string
+        fax:
+          description: Numero di fax dell'UO
+          required: false
+          type: string
+        indirizzo:
+          description: Indirizzo postale registrato in IPA per la sede dell'UO
+          required: false
+          type: string
+        mail1:
+          description: "Indirizzo email primario associato all\u2019UO"
+          required: false
+          type: string
+        mail2:
+          description: "Indirizzo email associato all\u2019UO"
+          required: false
+          type: string
+        mail3:
+          description: "Indirizzo email associato all\u2019UO"
+          required: false
+          type: string
+        mail_resp:
+          description: Cognome del responsabile dell'UO
+          required: false
+          type: string
+        nome_resp:
+          description: Nome del responsabile dell'UO
+          required: false
+          type: string
+        provincia:
+          description: Provincia registrata in IPA per la sede dell'UO
+          required: false
+          type: string
+        regione:
+          description: Regione registrata in IPA per la sede dell'UO
+          required: false
+          type: string
+        stato_canale:
+          description: Stato del canale di fatturazione; A:Attivo|V=In fase di validazione
+          required: false
+          type: string
+        tel:
+          description: Numero di telefono dell'UO
+          required: false
+          type: string
+        tel_resp:
+          description: Cognome del responsabile dell'UO
+          required: false
+          type: string
+      type: object
+    result:
+      properties:
+        cod_err:
+          description: Codice di ritorno
+          required: true
+          type: number
+        desc_err:
+          description: Descrizione errore
+          required: false
+          type: string
+        num_items:
+          description: Numero di occorrenze trovate
+          minimum: 0
+          required: true
+          type: number
+      type: object

@@ -19,6 +19,8 @@
 from os.path import join
 import requests
 import connexion
+from werkzeug.exceptions import Forbidden
+from connexion import ProblemException
 
 import logging
 import http.client as http_client
@@ -27,12 +29,25 @@ requests_log = logging.getLogger("requests.packages.urllib3")
 requests_log.setLevel(logging.DEBUG)
 requests_log.propagate = True
 
+class AuthenticationException(ProblemException, Forbidden):
+    pass
+
 
 def get_auth_header():
     """Lazy load authentication header. Context does not exist
         at load time.
     """
-    return connexion.request.headers.get('Authorization')
+    if connexion.request.headers.get('Authorization') is None:
+        raise AuthenticationException(status=401, title="Missing Authentication token")
+
+    try:
+        bearer, token = connexion.request.headers.get('Authorization').split(" ")
+        if bearer.lower() == "bearer":
+            return token
+    except (AttributeError, IndexError, ValueError):
+        raise AuthenticationException(status=401, title="Error parsing Authentication token %s" % connexion.request.headers.get('Authorization'))
+
+    raise AuthenticationException(status=401, title="Invalid token")
 
 
 def send_request(ws, data):
@@ -52,5 +67,8 @@ def parse_response(res):
         return res.text, 401
     elif err_code > 0:
         return res.text, 400
+
+    assert "data" in r_j
+    assert "result" in r_j
 
     return r_j, 200
