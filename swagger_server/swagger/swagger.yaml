@@ -1,0 +1,144 @@
+---
+swagger: "2.0"
+info:
+  description: "This is a simple API"
+  version: "1.0.0"
+  title: "Simple Inventory API"
+  contact:
+    email: "you@your-company.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/robipolli/indicepa/1.0.0"
+tags:
+- name: "admins"
+  description: "Secured Admin-only calls"
+- name: "developers"
+  description: "Operations available to regular developers"
+schemes:
+- "https"
+- "http"
+security:
+- APIKeyHeader: []
+paths:
+  /amministrazioni:
+    get:
+      tags:
+      - "developers"
+      summary: "searches amministrazioni"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "search_amministrazioni"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cod_amm"
+        in: "query"
+        description: "pass an optional search string for looking up inventory"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "search results matching criteria"
+          schema:
+            type: "object"
+            properties: {}
+        400:
+          description: "bad input parameter"
+      x-swagger-router-controller: "swagger_server.controllers.developers_controller"
+  /fatturazione-elettronica:
+    get:
+      tags:
+      - "developers"
+      summary: "cerca per codice fiscale fatturazione elettronica"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "search_fatturazione_elettronica"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cod_amm"
+        in: "query"
+        description: "COD_AMM"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "search results matching criteria"
+          schema:
+            type: "object"
+            properties: {}
+        400:
+          description: "bad input parameter"
+        401:
+          description: "Forbidden"
+      x-swagger-router-controller: "swagger_server.controllers.developers_controller"
+  /fatturazione-elettronica-codice-fiscale:
+    get:
+      tags:
+      - "developers"
+      summary: "cerca per codice fiscale fatturazione elettronica"
+      description: "By passing in the appropriate options, you can search for\navailable\
+        \ inventory in the system\n"
+      operationId: "search_fatturazione_elettronica_by_tax_code"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "codice_fiscale"
+        in: "query"
+        description: "COD_FISC"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "search results matching criteria"
+          schema:
+            type: "object"
+            properties: {}
+        400:
+          description: "bad input parameter"
+        401:
+          description: "Forbidden"
+      x-swagger-router-controller: "swagger_server.controllers.developers_controller"
+securityDefinitions:
+  APIKeyHeader:
+    type: "apiKey"
+    name: "X-API-Key"
+    in: "header"
+definitions:
+  InventoryItem:
+    type: "object"
+    required:
+    - "id"
+    - "manufacturer"
+    - "name"
+    - "releaseDate"
+    properties:
+      id:
+        type: "string"
+        format: "uuid"
+        example: "d290f1ee-6c54-4b01-90e6-d701748f0851"
+      name:
+        type: "string"
+        example: "Widget Adapter"
+      releaseDate:
+        type: "string"
+        format: "int32"
+        example: "2016-08-29T09:12:33.001Z"
+      manufacturer:
+        $ref: "#/definitions/Manufacturer"
+  Manufacturer:
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+        example: "ACME Corporation"
+      homePage:
+        type: "string"
+        format: "url"
+        example: "https://www.acme-corp.com"
+      phone:
+        type: "string"
+        example: "408-867-5309"
